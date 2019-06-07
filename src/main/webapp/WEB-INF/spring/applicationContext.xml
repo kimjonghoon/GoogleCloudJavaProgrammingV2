@@ -7,7 +7,7 @@
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/javaskool?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false" />
+		<property name="url" value="jdbc:mysql://192.168.15.10:3306/javaskool?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false" />
 		<!--
 		<property name="driverClassName" value="com.mysql.jdbc.GoogleDriver"/>
 		<property name="url" value="jdbc:google:mysql://{Instance connection name}/javaskool" />
@@ -28,8 +28,10 @@
 	</bean>
 
 	<bean id="gaeAuthenticationProvider" class="net.java_school.spring.security.GoogleAccountsAuthenticationProvider">
-		<property name="userService" ref="userService" />
+		<property name="userService" ref="userService"></property>
 	</bean>
+
+	<bean id="userService" class="net.java_school.user.UserServiceImpl" />
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -41,6 +43,4 @@
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 	
-	<bean id="userService" class="net.java_school.user.UserServiceImpl" />
-
 </beans>

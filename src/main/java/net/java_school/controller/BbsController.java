@@ -18,6 +18,7 @@ import net.java_school.board.Board;
 import net.java_school.board.BoardService;
 import net.java_school.commons.NumbersForPaging;
 import net.java_school.commons.Paginator;
+import net.java_school.user.GaeUser;
 import net.java_school.user.UserService;
 
 import org.springframework.stereotype.Controller;
@@ -149,12 +150,15 @@ public class BbsController extends Paginator {
 		String title = article.getTitle();
 		String content = article.getContent();
 		String email = article.getEmail();
-		
-		/* 
-		int endIndex = email.indexOf("@");
-		String name = email.substring(0, endIndex);
-		*/
-		String name = userService.findUser(article.getEmail()).getNickname();
+		String name = null;
+
+		GaeUser owner = userService.findUser(article.getEmail());
+		//For a robust local test environment, verify that the owner is null. This is because all user information is lost after the mvn clean command. 
+		if (owner == null) {
+			name = email; 
+		} else {
+			name = owner.getNickname();
+		}
 		
 		Date regdate = article.getRegdate();
 

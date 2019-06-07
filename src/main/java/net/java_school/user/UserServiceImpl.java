@@ -2,12 +2,15 @@ package net.java_school.user;
 
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
+import org.springframework.stereotype.Service;
+
 import com.googlecode.objectify.Key;
 import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Work;
 
 import net.java_school.spring.security.AppRole;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 	@Override

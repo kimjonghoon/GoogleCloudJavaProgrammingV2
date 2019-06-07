@@ -28,8 +28,8 @@
 	</bean>
 
 	<bean id="bbsController" class="net.java_school.controller.BbsController">
-		<property name="boardService" ref="boardService" />
-		<property name="userService" ref="userService" />
+		<property name="boardService" ref="boardService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 
 	<bean id="blobDownloadController" class="net.java_school.controller.BlobDownloadController" />
@@ -37,8 +37,8 @@
 	<bean id="blogController" class="net.java_school.controller.BlogController" />
 
 	<bean id="commentsController" class="net.java_school.controller.CommentsController">
-		<property name="boardService" ref="boardService" />
-		<property name="userService" ref="userService" />
+		<property name="boardService" ref="boardService"></property>
+		<property name="userService" ref="userService"></property>
 	</bean>
 
 	<bean id="homeController" class="net.java_school.controller.HomeController" />

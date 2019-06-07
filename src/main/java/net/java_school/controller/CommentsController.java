@@ -6,11 +6,11 @@ import java.util.List;
 
 import net.java_school.board.BoardService;
 import net.java_school.board.Comment;
+import net.java_school.user.GaeUser;
 import net.java_school.user.UserService;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,18 +33,36 @@ public class CommentsController {
 
 	@RequestMapping(value = "/{articleNo}", method = RequestMethod.GET)
 	public List<Comment> getAllComments(@PathVariable Integer articleNo, Principal principal, Authentication authentication) {
-
 		List<Comment> comments = boardService.getCommentList(articleNo);
 		
 		for(Comment comment : comments) {
 			String email = comment.getEmail();
-			String name = this.userService.findUser(email).getNickname();
+			String name = null;
+			
+			//For robust local test environment
+			GaeUser owner = this.userService.findUser(email);
+			if (owner == null) {
+				name = email;
+			} else {
+				name = owner.getNickname();
+			}
+			
 			comment.setName(name);
 		}
 
+		boolean isAdmin = false;
+		boolean isUser = false;
+
 		Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-		boolean isAdmin = authorities.contains(new SimpleGrantedAuthority("ROLE_ADMIN"));
-		boolean isUser = authorities.contains(new SimpleGrantedAuthority("ROLE_USER"));
+		for (GrantedAuthority authority : authorities) {
+			String role = authority.getAuthority();
+			if (role.equals("ROLE_USER")) {
+				isUser = true;
+			}
+			if (role.equals("ROLE_ADMIN")) {
+				isAdmin = true;
+			}
+		}
 
 		if (isUser) {
 			String username = principal.getName();
