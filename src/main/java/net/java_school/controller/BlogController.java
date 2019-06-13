@@ -45,7 +45,7 @@ public class BlogController {
 		Key<Category> categoryKey = Key.create(theLang, Category.class, category);
 		Key<Article> articleKey = Key.create(categoryKey, Article.class, id);
 		Article article = ofy().load().key(articleKey).now();
-		if (article == null) return "redirect:/";
+		if (article == null) return "redirect:/blog";
 		model.addAttribute("article", article);
 		
 		return "blog/" + category + "/" + id;
