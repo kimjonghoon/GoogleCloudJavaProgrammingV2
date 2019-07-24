@@ -9,7 +9,7 @@ SpringBbs
 * i18n
 * Apache Tiles
 
-## Database Design (The member and authorities tables are not used, but are created for the program updates.)
+## Database Design (The member and authorities tables are not used, but previous versions used these tables, so I did not remove them.)
 
 	mysql --user=root --password mysql
 	
@@ -76,9 +76,6 @@ SpringBbs
 	    constraint PK_ATTACHFILE PRIMARY KEY(attachfileno)
 	);
 	
-	insert into board values ('chat','Chat','수다');
-	commit;
-	
 	create table views (
 	  no int primary key AUTO_INCREMENT,
 	  articleNo int,
@@ -89,3 +86,9 @@ SpringBbs
 
 ## How to run (The file upload test is only available in the Java 8 environment.)
 **mvn appengine:run**
+
+## Note
+Even if you are logged in as an administrator, the **Admin** may not be displayed in the main menu.
+This is due to the unique characteristics of the Datastore.
+The **Admin** menu will appear shortly.
+You can use this menu to create a new bulletin board.
