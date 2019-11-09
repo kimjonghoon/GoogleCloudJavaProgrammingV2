@@ -25,6 +25,7 @@
 		<archiveClasses>true</archiveClasses>
 		<spring.version>5.2.1.RELEASE</spring.version>
 		<spring.security.version>5.2.1.RELEASE</spring.security.version>
+		<appengine.version>1.9.76</appengine.version>
 	</properties>
 
 	<prerequisites>
@@ -33,10 +34,11 @@
 
 	<dependencies>
 		<!-- Compile/runtime dependencies -->
+		<!-- https://mvnrepository.com/artifact/com.google.appengine/appengine-endpoints -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>1.9.76</version>
+			<version>${appengine.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -78,13 +80,13 @@
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-testing</artifactId>
-			<version>1.9.76</version>
+			<version>${appengine.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-stubs</artifactId>
-			<version>1.9.76</version>
+			<version>${appengine.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
