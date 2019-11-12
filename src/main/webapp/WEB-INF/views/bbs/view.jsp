@@ -200,7 +200,7 @@ $(document).on('click', '#all-comments', function (e) {
         var url = $form.attr("action");
         $.ajax({
             url: url,
-            type: 'POST',
+            type: 'PUT',
             data: dataToBeSent,
             success: function () {
                 displayComments();
@@ -427,7 +427,6 @@ $(document).on('click', '#all-comments', function (e) {
         <input type="hidden" name="searchWord" value="${param.searchWord }" />
     </form>
     <sf:form id="deleteCommentForm" action="/comments/${articleNo }/" method="delete">
-        <input type="hidden" name="_method" value="DELETE" />
     </sf:form>
     <form id="deleteAttachFileForm" action="/bbs/deleteAttachFile" method="post">
         <input type="hidden" name="attachFileNo" />
@@ -437,10 +436,10 @@ $(document).on('click', '#all-comments', function (e) {
         <input type="hidden" name="searchWord" value="${param.searchWord }" />
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
-    <sf:form id="modifyCommentForm" method="put">
-        <input type="hidden" name="_method" value="PUT" />
+    <form id="modifyCommentForm">
         <input type="hidden" name="memo" />
-    </sf:form>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    </form>
     <form id="downForm" action="/serve" method="get">
         <input type="hidden" name="filekey" />
     </form>

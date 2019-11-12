@@ -19,7 +19,7 @@ import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 public class BlobDownloadController {
 	private BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	
-	@RequestMapping("/serve")
+	@RequestMapping("serve")
 	public void download(String filekey, HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		BlobKey blobKey = new BlobKey(filekey);
 		BlobInfo blobInfo = new BlobInfoFactory().loadBlobInfo(blobKey);

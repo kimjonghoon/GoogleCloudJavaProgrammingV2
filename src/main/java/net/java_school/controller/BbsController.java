@@ -25,11 +25,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.google.appengine.api.blobstore.BlobInfo;
 import com.google.appengine.api.blobstore.BlobInfoFactory;
@@ -38,8 +38,9 @@ import com.google.appengine.api.blobstore.BlobstoreService;
 import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
 
 @Controller
-@RequestMapping("/bbs")
+@RequestMapping("bbs")
 public class BbsController extends Paginator {
+
 	private final BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	private BoardService boardService;
 	private UserService userService;
@@ -47,7 +48,7 @@ public class BbsController extends Paginator {
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
-	
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -65,7 +66,7 @@ public class BbsController extends Paginator {
 		}
 	}
 
-	@GetMapping("/{boardCd}")
+	@GetMapping("{boardCd}")
 	public String list(@CookieValue(value="numPerPage", defaultValue="10") String num, @PathVariable String boardCd, Integer page, String searchWord, Locale locale, Model model) {
 
 		if (page == null) {
@@ -118,7 +119,7 @@ public class BbsController extends Paginator {
 
 	}
 
-	@GetMapping("/{boardCd}/{articleNo}")
+	@GetMapping("{boardCd}/{articleNo}")
 	public String view(@CookieValue(value="numPerPage", defaultValue="10") String num, @PathVariable String boardCd, @PathVariable Integer articleNo,
 			Integer page, String searchWord, Locale locale, HttpServletRequest req, Model model) {
 
@@ -159,7 +160,7 @@ public class BbsController extends Paginator {
 		} else {
 			name = owner.getNickname();
 		}
-		
+
 		Date regdate = article.getRegdate();
 
 		int hit = boardService.getTotalViews(articleNo);
@@ -217,7 +218,7 @@ public class BbsController extends Paginator {
 		return "bbs/view";
 	}
 
-	@GetMapping("/{boardCd}/new")
+	@GetMapping("{boardCd}/new")
 	public String writeForm(@PathVariable String boardCd, Locale locale, Model model) {
 		String lang = locale.getLanguage();
 		String boardName = this.getBoardName(boardCd, lang);
@@ -231,7 +232,8 @@ public class BbsController extends Paginator {
 		return "bbs/write";
 
 	}
-	@PostMapping("/upload")
+	
+	@PostMapping("upload")
 	public String upload(Integer articleNo, String boardCd, Integer page, String searchWord, HttpServletRequest req) {
 		Map<String, List<BlobKey>> blobs = blobstoreService.getUploads(req);
 		List<BlobKey> blobKeys = blobs.get("attachFile");
@@ -261,7 +263,7 @@ public class BbsController extends Paginator {
 
 	}
 
-	@PostMapping("/{boardCd}")
+	@PostMapping("{boardCd}")
 	public String write(@Valid Article article,
 			BindingResult bindingResult,
 			@PathVariable String boardCd,
@@ -287,7 +289,7 @@ public class BbsController extends Paginator {
 
 	}
 
-	@GetMapping("/{boardCd}/{articleNo}/edit")
+	@GetMapping("{boardCd}/{articleNo}/edit")
 	public String modifyForm(@PathVariable String boardCd, @PathVariable Integer articleNo, Locale locale, Model model) {
 
 		String lang = locale.getLanguage();
@@ -305,7 +307,7 @@ public class BbsController extends Paginator {
 		return "bbs/modify";
 	}
 
-	@PostMapping("/{boardCd}/{articleNo}")
+	@PostMapping("{boardCd}/{articleNo}")
 	public String modify(@Valid Article article,
 			BindingResult bindingResult,
 			@PathVariable String boardCd,
@@ -339,7 +341,7 @@ public class BbsController extends Paginator {
 
 	}
 
-	@RequestMapping(value = "/{boardCd}/{articleNo}", method = RequestMethod.DELETE)
+	@DeleteMapping("{boardCd}/{articleNo}")
 	public String deleteArticle(@PathVariable String boardCd, @PathVariable Integer articleNo, Integer page, String searchWord) {
 		Article article = boardService.getArticle(articleNo);
 		boardService.removeArticle(article);
@@ -348,7 +350,7 @@ public class BbsController extends Paginator {
 
 	}
 
-	@PostMapping("/deleteAttachFile")
+	@PostMapping("deleteAttachFile")
 	public String deleteAttachFile(int attachFileNo,
 			Integer articleNo,
 			String boardCd,
@@ -357,7 +359,7 @@ public class BbsController extends Paginator {
 
 		AttachFile attachFile = boardService.getAttachFile(attachFileNo);
 		boardService.removeAttachFile(attachFile);
-		
+
 		BlobKey blobKey = new BlobKey(attachFile.getFilekey());
 		blobstoreService.delete(blobKey);
 

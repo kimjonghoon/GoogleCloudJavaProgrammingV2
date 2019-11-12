@@ -148,13 +148,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public void setEditableTrue(List<Comment> comments) {
-		for (Comment comment : comments) {
-			comment.setEditable(true);
-		}
-	}
-
-	@Override
 	public int getTotalViews(int articleNo) {
 		return boardMapper.selectCountOfViews(articleNo);
 	}

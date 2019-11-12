@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("users")
 public class UsersController {
 
 	private UserService userService;
@@ -19,13 +19,13 @@ public class UsersController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
-	@GetMapping("/changeNickname")
+
+	@GetMapping("changeNickname")
 	public String changeNicknameForm() {
 		return "users/changeNickname";
 	}
-	
-	@PostMapping("/changeNickname")
+
+	@PostMapping("changeNickname")
 	public String changeNickname(String nickname, Model model, GaeUserAuthentication gaeUserAuthentication) {
 		String msg = "Success";
 		GaeUser gaeUser = (GaeUser) gaeUserAuthentication.getPrincipal();
@@ -44,11 +44,11 @@ public class UsersController {
 		}
 
 		model.addAttribute("msg", msg);
-		
+
 		return "redirect:/users/welcome";
 	}
-	
-	@GetMapping("/welcome")
+
+	@GetMapping("welcome")
 	public String changeNicknameConfirm() {
 		return "users/welcome";
 	}

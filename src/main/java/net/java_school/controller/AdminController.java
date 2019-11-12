@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.googlecode.objectify.Key;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping("admin")
 public class AdminController extends Paginator {
 
 	private BoardService boardService;
@@ -45,12 +45,12 @@ public class AdminController extends Paginator {
 
 		return "admin/index";
 	}
-	@GetMapping("/new")
+	@GetMapping("new")
 	public String postBlog() {
 		return "admin/new";
 	}
 
-	@PostMapping("/new")
+	@PostMapping("new")
 	public String postBlog(Article article, String category, Locale locale, Principal principal) {
 		String lang = locale.getLanguage();
 		Key<Lang> theLang = Key.create(Lang.class, lang);
@@ -67,7 +67,7 @@ public class AdminController extends Paginator {
 		return "redirect:/admin";
 	}
 
-	@GetMapping("/modify")
+	@GetMapping("modify")
 	public String modifyBlog(String webSafeString, Model model) {
 		Key<Article> key = Key.create(webSafeString);
 		Article article = ofy()
@@ -79,7 +79,7 @@ public class AdminController extends Paginator {
 		return "admin/modify";
 	}
 
-	@PostMapping("/modify")
+	@PostMapping("modify")
 	public String modifyBlog(Article article, String webSafeString) {
 		Key<Article> key = Key.create(webSafeString);
 		Article storedArticle = ofy()
@@ -98,7 +98,7 @@ public class AdminController extends Paginator {
 		return "redirect:/admin";
 	}
 
-	@PostMapping("/delete")
+	@PostMapping("delete")
 	public String delBlog(String webSafeString) {
 		Key<Article> key = Key.create(webSafeString);
 		ofy().delete().key(key).now();
@@ -106,7 +106,7 @@ public class AdminController extends Paginator {
 		return "redirect:/admin";
 	}
 
-	@GetMapping("/board")
+	@GetMapping("board")
 	public String boardList(Model model) {
 		List<Board> boards = boardService.getBoards();
 		model.addAttribute("boards", boards);
@@ -114,14 +114,14 @@ public class AdminController extends Paginator {
 		return "admin/board";
 	}
 
-	@PostMapping("/createBoard")
+	@PostMapping("createBoard")
 	public String createBoard(Board board) {
 		boardService.createBoard(board);
 
 		return "redirect:/admin/board";
 	}
 
-	@PostMapping("/editBoard")
+	@PostMapping("editBoard")
 	public String editBoard(Board board) {
 		boardService.editBoard(board);
 

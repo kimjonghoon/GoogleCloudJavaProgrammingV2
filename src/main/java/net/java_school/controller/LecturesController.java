@@ -39,5 +39,5 @@ public class LecturesController {
 	public String getGoogleAppEnginePosts(@PathVariable String article) {
 		return "google-app-engine/" + article;
 	}
-	
+
 }

@@ -29,7 +29,7 @@ public interface BoardService {
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public void addAttachFile(AttachFile attachFile);
-	
+
 	@PreAuthorize("(hasRole('ROLE_USER') and #article.email == principal.email) or hasRole('ROLE_ADMIN')")
 	public void modifyArticle(Article article);
 
@@ -73,9 +73,6 @@ public interface BoardService {
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
 	public Comment getComment(int commentNo);
-
-	@PreAuthorize("hasRole('ROLE_ADMIN')")
-	public void setEditableTrue(List<Comment> comments);
 
 	@PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_GOOGLE')")
 	public int getTotalViews(int articleNo);

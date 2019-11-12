@@ -18,7 +18,7 @@ import net.java_school.blog.Category;
 import net.java_school.blog.Lang;
 
 @Controller
-@RequestMapping("/blog")
+@RequestMapping("blog")
 public class BlogController {
 
 	@GetMapping
@@ -47,7 +47,7 @@ public class BlogController {
 		Article article = ofy().load().key(articleKey).now();
 		if (article == null) return "redirect:/blog";
 		model.addAttribute("article", article);
-		
+
 		return "blog/" + category + "/" + id;
 	}
 

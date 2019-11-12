@@ -11,13 +11,16 @@ import net.java_school.user.UserService;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("comments")
 public class CommentsController {
 
 	private BoardService boardService;
@@ -26,19 +29,19 @@ public class CommentsController {
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
-	
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/{articleNo}", method = RequestMethod.GET)
+	@GetMapping("{articleNo}")
 	public List<Comment> getAllComments(@PathVariable Integer articleNo, Principal principal, Authentication authentication) {
 		List<Comment> comments = boardService.getCommentList(articleNo);
-		
+
 		for(Comment comment : comments) {
 			String email = comment.getEmail();
 			String name = null;
-			
+
 			//For robust local test environment
 			GaeUser owner = this.userService.findUser(email);
 			if (owner == null) {
@@ -46,7 +49,7 @@ public class CommentsController {
 			} else {
 				name = owner.getNickname();
 			}
-			
+
 			comment.setName(name);
 		}
 
@@ -72,9 +75,11 @@ public class CommentsController {
 				}
 			}
 		}
-		
+
 		if (isAdmin) {
-			boardService.setEditableTrue(comments);
+			for (Comment comment : comments) {
+				comment.setEditable(true);
+			}
 		}
 
 		//for security reasons
@@ -85,7 +90,7 @@ public class CommentsController {
 		return comments;
 	}
 
-	@RequestMapping(value = "/{articleNo}", method = RequestMethod.POST)
+	@PostMapping("{articleNo}")
 	public void addComment(String memo, @PathVariable Integer articleNo, Principal principal) {
 		Comment comment = new Comment();
 		comment.setMemo(memo);
@@ -95,14 +100,14 @@ public class CommentsController {
 		boardService.addComment(comment);
 	}
 
-	@RequestMapping(value = "/{articleNo}/{commentNo}", method = RequestMethod.PUT)
+	@PutMapping("{articleNo}/{commentNo}")
 	public void updateComment(String memo, @PathVariable Integer articleNo, @PathVariable Integer commentNo, Principal principal) {
 		Comment comment = boardService.getComment(commentNo);
 		comment.setMemo(memo);
 		boardService.modifyComment(comment);
 	}
 
-	@RequestMapping(value = "/{articleNo}/{commentNo}", method = RequestMethod.DELETE)
+	@DeleteMapping("{articleNo}/{commentNo}")
 	public void deleteComment(@PathVariable Integer articleNo, @PathVariable Integer commentNo) {
 		Comment comment = boardService.getComment(commentNo);
 		boardService.removeComment(comment);
