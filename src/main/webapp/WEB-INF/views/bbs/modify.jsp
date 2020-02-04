@@ -51,7 +51,7 @@ $(document).ready(function() {
 </tr>
 <tr>
     <td colspan="2">
-        <textarea name="content" rows="17" cols="50" id="modifyForm-ta">${article.content }</textarea><br />
+        <textarea name="content" rows="10" id="modifyForm-ta">${article.content }</textarea><br />
         <sf:errors path="content" cssClass="error" />
     </td>
 </tr>
