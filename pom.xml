@@ -23,9 +23,9 @@
 		<objectify.version>5.1.22</objectify.version>
 		<guava.version>23.0</guava.version>
 		<archiveClasses>true</archiveClasses>
-		<spring.version>5.2.2.RELEASE</spring.version>
+		<spring.version>5.2.3.RELEASE</spring.version>
 		<spring.security.version>5.2.1.RELEASE</spring.security.version>
-		<appengine.version>1.9.77</appengine.version>
+		<appengine.version>1.9.78</appengine.version>
 	</properties>
 
 	<prerequisites>
@@ -129,7 +129,7 @@
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-			<version>6.1.0.Final</version>
+			<version>6.1.2.Final</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
@@ -147,7 +147,7 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.5.3</version>
+			<version>3.5.4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
@@ -159,7 +159,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.10.1</version>
+			<version>2.10.2</version>
 		</dependency>
 	</dependencies>
 
