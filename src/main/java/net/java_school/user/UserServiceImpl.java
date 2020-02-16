@@ -9,6 +9,7 @@ import com.googlecode.objectify.ObjectifyService;
 import com.googlecode.objectify.Work;
 
 import net.java_school.spring.security.AppRole;
+import com.google.appengine.api.users.UserServiceFactory;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -19,6 +20,9 @@ public class UserServiceImpl implements UserService {
 		if (user == null) {
 			gaeUser.getAuthorities().add(AppRole.ROLE_USER);
 			gaeUser.setEnabled(true);
+			if (UserServiceFactory.getUserService().isUserAdmin()) {
+				gaeUser.getAuthorities().add(AppRole.ROLE_ADMIN);
+			}
 			ofy().save().entity(gaeUser).now();
 		} else {
 			if(gaeUser.isEnabled()) {
