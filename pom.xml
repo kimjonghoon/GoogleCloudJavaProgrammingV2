@@ -23,7 +23,7 @@
 		<objectify.version>5.1.22</objectify.version>
 		<guava.version>23.0</guava.version>
 		<archiveClasses>true</archiveClasses>
-		<spring.version>5.2.6.RELEASE</spring.version>
+		<spring.version>5.2.7.RELEASE</spring.version>
 		<spring.security.version>5.3.2.RELEASE</spring.security.version>
 		<appengine.version>1.9.80</appengine.version>
 	</properties>
@@ -141,13 +141,13 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>2.0.4</version>
+			<version>2.0.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.5.4</version>
+			<version>3.5.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
@@ -159,7 +159,7 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.11.0</version>
+			<version>2.11.1</version>
 		</dependency>
 	</dependencies>
 
