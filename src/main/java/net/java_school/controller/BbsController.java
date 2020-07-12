@@ -114,7 +114,7 @@ public class BbsController extends Paginator {
 		model.addAttribute("boardName", boardName);
 
 		model.addAttribute("boardCd", boardCd);
-
+		
 		return "bbs/list";
 
 	}

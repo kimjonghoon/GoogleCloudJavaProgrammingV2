@@ -5,8 +5,8 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <article>
 <ul>
-    <c:forEach var="article" items="${articles }" varStatus="status">
-        <li><a href="/blog/${article.category }/${article.id }">${article.title }</a> - <fmt:formatDate value="${article.date }" type="date" /></li>
-	</c:forEach>
+<c:forEach var="article" items="${articles }" varStatus="status">
+  <li><a href="/${article.category }/${article.id }">${article.title }</a> - <fmt:formatDate value="${article.date }" type="date" /></li>
+</c:forEach>
 </ul>
 </article>

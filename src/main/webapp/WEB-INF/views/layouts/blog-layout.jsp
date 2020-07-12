@@ -11,8 +11,8 @@
 <html lang="<spring:message code="lang" />">
 <head>
 <meta charset="UTF-8" />
-<title>${article.title }</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>${article.title }</title>
 <meta name="Keywords" content="${article.keywords }" />
 <meta name="Description" content="${article.description }" />
 <link rel="stylesheet" href="/resources/css/<spring:message code="lang" />.css" />
@@ -38,6 +38,10 @@
 		<div id="content">
 			<tiles:insertAttribute name="content" />
 		</div>
+	</div>
+
+	<div id="sidebar" lang="en">
+		<tiles:insertAttribute name="sidebar" />
 	</div>
 	
 	<div id="extra">

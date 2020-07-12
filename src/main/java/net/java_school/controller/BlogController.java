@@ -21,34 +21,72 @@ import net.java_school.blog.Lang;
 @RequestMapping("blog")
 public class BlogController {
 
+	private String getChapter(String category) {
+		String chapter = null;
+
+		switch (category) {
+			case "java":
+				chapter = "Java";
+				break;
+			case "jdbc":
+				chapter = "JDBC";
+				break;
+			case "jsp":
+				chapter = "JSP";
+				break;
+			case "css-layout":
+				chapter = "CSS Layout";
+				break;
+			case "jsp-pjt":
+				chapter = "JSP Project";
+				break;
+			case "spring":
+				chapter = "Spring";
+				break;
+			case "javascript":
+				chapter = "JavaScript";
+				break;
+			case "google-app-engine":
+				chapter = "Google Cloud";
+				break;	
+			case "blog":
+				chapter = "Blog";
+				break;
+		}
+
+		return chapter;
+	}
+	
 	@GetMapping
 	public String index(Model model, Locale locale) {
 		String lang = locale.getLanguage();
 		Key<Lang> theLang = Key.create(Lang.class, lang);
+		Key<Category> theCategory = Key.create(theLang, Category.class, "blog");
 
 		List<Article> articles = ofy()
-				.load()
-				.type(Article.class)
-				.ancestor(theLang)
-				.order("date")
-				.list();
+			.load()
+			.type(Article.class)
+			.ancestor(theLang)
+			.ancestor(theCategory)
+			.order("-date")
+			.list();
 
 		model.addAttribute("articles", articles);
 
-		return "blog/index";
+		return "blog";
 	}
 
-	@GetMapping("{category}/{id}")
-	public String blog(@PathVariable("category") String category, @PathVariable("id") String id, Locale locale, Model model) {
+	@GetMapping("{id}")
+	public String blog(@PathVariable("id") String id, Locale locale, Model model) {
 		String lang = locale.getLanguage();
 		Key<Lang> theLang = Key.create(Lang.class, lang);
-		Key<Category> categoryKey = Key.create(theLang, Category.class, category);
-		Key<Article> articleKey = Key.create(categoryKey, Article.class, id);
-		Article article = ofy().load().key(articleKey).now();
+		Key<Category> theCategory = Key.create(theLang, Category.class, "blog");
+		Key<Article> theArticle = Key.create(theCategory, Article.class, id);
+		Article article = ofy().load().key(theArticle).now();
 		if (article == null) return "redirect:/blog";
 		model.addAttribute("article", article);
 
-		return "blog/" + category + "/" + id;
+		return "blog/" + id;
 	}
 
 }

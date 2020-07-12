@@ -6,16 +6,16 @@
 
 <tiles:importAttribute name="links" />
 <tiles:importAttribute name="scripts" />
-<tiles:importAttribute name="alias" />
+<tiles:importAttribute name="titleKeywordsDescription" />
 
 <!DOCTYPE html>
 <html lang="<spring:message code="lang" />">
 <head>
 <meta charset="UTF-8" />
-<title><spring:message code="${alias }.title" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="Keywords" content="<spring:message code="${alias }.keys" />" />
-<meta name="Description" content="<spring:message code="${alias }.desc" />" />
+<title><spring:message code="${titleKeywordsDescription }.title" /></title>
+<meta name="Keywords" content="<spring:message code="${titleKeywordsDescription }.keys" />" />
+<meta name="Description" content="<spring:message code="${titleKeywordsDescription }.desc" />" />
 <link rel="stylesheet" href="/resources/css/<spring:message code="lang" />.css" />
 <c:forEach var="link" items="${links }">
 	<link rel="stylesheet" href="<c:url value="${link }" />" type="text/css" />

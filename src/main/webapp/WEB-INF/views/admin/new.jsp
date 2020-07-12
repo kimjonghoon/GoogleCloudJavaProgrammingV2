@@ -62,6 +62,7 @@ $(document).ready(function () {
         <label><input type="radio" name="category" value="spring" />Spring</label>
         <label><input type="radio" name="category" value="javascript" />JavaScript</label>
         <label><input type="radio" name="category" value="google-app-engine" />Google Cloud</label>
+        <label><input type="radio" name="category" value="blog" />Blog</label>
     </div>
     <div>
         id (<spring:message code="blog.id.desc" />)<br />
