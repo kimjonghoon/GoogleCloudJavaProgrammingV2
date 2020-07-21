@@ -92,67 +92,7 @@
 			<add-attribute value="/resources/css/blog.css" />
 		</put-list-attribute>
 	</definition>
-	<definition name="java" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="java/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jdbc" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jdbc/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jsp" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jsp/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="css-layout" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="css-layout/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jsp-pjt" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="jsp-pjt/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="spring" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="spring/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="javascript" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="javascript/*" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="google-app-engine" extends="blog.default">
-		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
-		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
-	</definition>
-	<definition name="google-app-engine/*" extends="blog.default">
+	<definition name="tutorial/*" extends="blog.default">
 		<put-attribute name="content" value="/WEB-INF/views/inc/content.jsp" />
 		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
 	</definition>

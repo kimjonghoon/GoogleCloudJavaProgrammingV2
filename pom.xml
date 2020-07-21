@@ -12,9 +12,7 @@
 
 	<properties>
 		<!-- uncomment if you wish to set your project here project- gcloud is used otherwise -->
-		<!--
-		<app.deploy.project>your-app-id</app.deploy.project>
-		-->
+		<app.deploy.project>java-school</app.deploy.project>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -23,9 +21,9 @@
 		<objectify.version>5.1.22</objectify.version>
 		<guava.version>23.0</guava.version>
 		<archiveClasses>true</archiveClasses>
-		<spring.version>5.2.7.RELEASE</spring.version>
+		<spring.version>5.2.8.RELEASE</spring.version>
 		<spring.security.version>5.3.2.RELEASE</spring.security.version>
-		<appengine.version>1.9.80</appengine.version>
+		<appengine.version>1.9.81</appengine.version>
 	</properties>
 
 	<prerequisites>

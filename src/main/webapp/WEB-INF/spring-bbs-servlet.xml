@@ -23,27 +23,25 @@
 
 	<context:annotation-config />
 
-	<bean id="adminController" class="net.java_school.controller.AdminController">
-		<property name="boardService" ref="boardService" />
-	</bean>
+	<bean id="homeController" class="net.java_school.controller.HomeController" />
+
+	<bean id="blogController" class="net.java_school.controller.BlogController" />
 
 	<bean id="bbsController" class="net.java_school.controller.BbsController">
-		<property name="boardService" ref="boardService"></property>
-		<property name="userService" ref="userService"></property>
+		<property name="boardService" ref="boardService" />
+		<property name="userService" ref="userService" />
 	</bean>
 
 	<bean id="blobDownloadController" class="net.java_school.controller.BlobDownloadController" />
 
-	<bean id="blogController" class="net.java_school.controller.BlogController" />
-
 	<bean id="commentsController" class="net.java_school.controller.CommentsController">
-		<property name="boardService" ref="boardService"></property>
-		<property name="userService" ref="userService"></property>
+		<property name="boardService" ref="boardService" />
+		<property name="userService" ref="userService" />
 	</bean>
 
-	<bean id="homeController" class="net.java_school.controller.HomeController" />
-	
-	<bean id="lectureController" class="net.java_school.controller.LecturesController" />
+	<bean id="adminController" class="net.java_school.controller.AdminController">
+		<property name="boardService" ref="boardService" />
+	</bean>
 
 	<bean id="usersController" class="net.java_school.controller.UsersController">
 		<property name="userService" ref="userService" />
@@ -68,7 +66,7 @@
 	</bean>
 
 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<property name="defaultErrorView" value="error" />
+		<!--	<property name="defaultErrorView" value="error" /> -->
 		<property name="exceptionMappings">
 			<props>
 				<prop key="AccessDeniedException">
