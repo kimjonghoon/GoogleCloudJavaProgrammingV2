@@ -33,20 +33,25 @@ public class AdminController extends Paginator {
 	}
 
 	@GetMapping
-	public String index(Model model) {
-
+	public String index(Model model, Locale locale) {
+		String lang = locale.getLanguage();
+		Key<Lang> theLang = Key.create(Lang.class, lang);
+		
 		List<Article> articles = ofy()
 				.load()
 				.type(Article.class)
+				.ancestor(theLang)
 				.order("date")
 				.list();
 
 		model.addAttribute("articles", articles);
+		model.addAttribute("titleKeywordsDescription", "admin.index");
 
 		return "admin/index";
 	}
 	@GetMapping("new")
-	public String postBlog() {
+	public String postBlog(Model model) {
+		model.addAttribute("titleKeywordsDescription", "admin.new");
 		return "admin/new";
 	}
 
@@ -75,6 +80,7 @@ public class AdminController extends Paginator {
 				.key(key)
 				.now();
 		model.addAttribute("article", article);
+		model.addAttribute("titleKeywordsDescription", "admin.modify");
 
 		return "admin/modify";
 	}
@@ -110,6 +116,7 @@ public class AdminController extends Paginator {
 	public String boardList(Model model) {
 		List<Board> boards = boardService.getBoards();
 		model.addAttribute("boards", boards);
+		model.addAttribute("titleKeywordsDescription", "admin.board");
 
 		return "admin/board";
 	}

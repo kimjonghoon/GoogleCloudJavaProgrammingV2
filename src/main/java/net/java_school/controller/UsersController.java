@@ -21,7 +21,8 @@ public class UsersController {
 	}
 
 	@GetMapping("changeNickname")
-	public String changeNicknameForm() {
+	public String changeNicknameForm(Model model) {
+		model.addAttribute("titleKeywordsDescription", "user.changeNickname");
 		return "users/changeNickname";
 	}
 
@@ -49,7 +50,8 @@ public class UsersController {
 	}
 
 	@GetMapping("welcome")
-	public String changeNicknameConfirm() {
+	public String changeNicknameConfirm(Model model) {
+		model.addAttribute("titleKeywordsDescription", "user.welcome");
 		return "users/welcome";
 	}
 

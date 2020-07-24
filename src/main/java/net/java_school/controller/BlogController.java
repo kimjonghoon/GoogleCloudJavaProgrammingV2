@@ -130,6 +130,7 @@ public class BlogController {
 			.list();
 
 		model.addAttribute("articles", articles);
+		model.addAttribute("titleKeywordsDescription", "blog.index");
 
 		return "blog";
 	}

@@ -114,6 +114,7 @@ public class BbsController extends Paginator {
 		model.addAttribute("boardName", boardName);
 
 		model.addAttribute("boardCd", boardCd);
+		model.addAttribute("titleKeywordsDescription", "bbs.list");
 		
 		return "bbs/list";
 
@@ -215,6 +216,8 @@ public class BbsController extends Paginator {
 		model.addAttribute("articleNo", articleNo);
 		model.addAttribute("boardCd", boardCd);
 
+		model.addAttribute("titleKeywordsDescription", "bbs.view");
+
 		return "bbs/view";
 	}
 
@@ -228,6 +231,7 @@ public class BbsController extends Paginator {
 		model.addAttribute("article", new Article());
 		model.addAttribute("boards", boards);
 		model.addAttribute("boardCd", boardCd);
+		model.addAttribute("titleKeywordsDescription", "bbs.write");
 
 		return "bbs/write";
 
@@ -303,6 +307,7 @@ public class BbsController extends Paginator {
 		model.addAttribute("boards", boards);
 		model.addAttribute("boardCd", boardCd);
 		model.addAttribute("articleNo", articleNo);
+		model.addAttribute("titleKeywordsDescription", "bbs.modify");
 
 		return "bbs/modify";
 	}
@@ -324,7 +329,7 @@ public class BbsController extends Paginator {
 			model.addAttribute("boards", boards);
 			model.addAttribute("boardCd", boardCd);
 			model.addAttribute("articleNo", articleNo);
-
+			model.addAttribute("titleKeywordsDescription", "bbs.modify");
 			return "bbs/modify";
 		}
 
