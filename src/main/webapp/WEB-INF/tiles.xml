@@ -82,7 +82,6 @@
 		<put-attribute name="sidebar" value="/WEB-INF/views/inc/chapter-sub.jsp" />
 		<put-list-attribute name="links" inherit="true">
 			<add-attribute value="/resources/css/prettify.css" />
-			<add-attribute value="/resources/css/blog.css" />
 		</put-list-attribute>
 		<put-list-attribute name="scripts" inherit="true">
 			<add-attribute value="/resources/js/prettify.js" />
