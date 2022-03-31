@@ -21,7 +21,7 @@
 		<objectify.version>5.1.22</objectify.version>
 		<guava.version>23.0</guava.version>
 		<archiveClasses>true</archiveClasses>
-		<spring.version>5.2.8.RELEASE</spring.version>
+		<spring.version>5.3.18</spring.version>
 		<spring.security.version>5.3.2.RELEASE</spring.security.version>
 		<appengine.version>1.9.81</appengine.version>
 	</properties>
